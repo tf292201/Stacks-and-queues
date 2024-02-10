@@ -66,3 +66,24 @@ function isBalanced(str) {
   return stack.length === 0;
 }
 //4. Josephus Problem
+function findSurvivor(numPeople, skip) {
+  let circle = [];
+  for (let i = 1; i <= numPeople; i++) {
+      circle.push(i);
+  }
+
+  let currentPosition = 0;
+
+  // Iterate through the circle until only one person remains
+  while (circle.length > 1) {
+      // Calculate the index of the person to be eliminated
+      currentPosition = (currentPosition + skip - 1) % circle.length;
+
+      // Remove the eliminated person from the circle
+      circle.splice(currentPosition, 1);
+  }
+
+
+  return circle[0];
+}
+
